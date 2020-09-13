@@ -1,9 +1,10 @@
 from tkinter import *
 import tkinter.font as tkfont
+from math import sqrt
 
 
 mainWindow = Tk()
-mainWindow.title("Calculator")
+mainWindow.title("Tkalcu")
 mainWindow.config(bg = "black")
 
 operation = StringVar()
@@ -48,11 +49,26 @@ def dividepress(arg = 0):
     addCharacter("/")
 def powerpress(arg = 0):
     addCharacter("**")
+def paropenpress(arg = 0):
+    addCharacter("(")
+def parclosepress(arg = 0):
+    addCharacter(")")
+def sqrtpress(arg = 0):
+    addCharacter("sqrt(")
+
+
+buttonWidth = 5
+
 
 
 def delchar():
     operation.set(operation.get()[:-1])
     operationDisplay.config(text = operation.get())
+    
+def clear():
+    operation.set("")
+    operationDisplay.config(text = operation.get())
+
 
 
 def evaluate(arg = 0):
@@ -68,28 +84,33 @@ opButtonBg = "#4a4a4a"
 resultDisplay = Label(text = "", fg = "white", bg = "black", font = 30)
 
 
-bttn1 = Button(text = "1", fg = "white", bg = buttonBg, command = b1press)
-bttn2 = Button(text = "2", fg = "white", bg = buttonBg,command = b2press)
-bttn3 = Button(text = "3", fg = "white", bg = buttonBg,command = b3press)
-bttn4 = Button(text = "4", fg = "white", bg = buttonBg,command = b4press)
-bttn5 = Button(text = "5",fg = "white", bg = buttonBg, command = b5press)
-bttn6 = Button(text = "6", fg = "white", bg = buttonBg,command = b6press)
-bttn7 = Button(text = "7", fg = "white", bg = buttonBg,command = b7press)
-bttn8 = Button(text = "8", fg = "white", bg = buttonBg,command = b8press)
-bttn9 = Button(text = "9",fg = "white", bg = buttonBg, command = b9press)
-bttn0 = Button(text = "0", fg = "white", bg = buttonBg,command = b0press)
+bttn1 = Button(text = "1", fg = "white", bg = buttonBg, width = buttonWidth, command = b1press)
+bttn2 = Button(text = "2", fg = "white", bg = buttonBg,width = buttonWidth,command = b2press)
+bttn3 = Button(text = "3", fg = "white", bg = buttonBg, width = buttonWidth,command = b3press)
+bttn4 = Button(text = "4", fg = "white", bg = buttonBg, width = buttonWidth,command = b4press)
+bttn5 = Button(text = "5",fg = "white", bg = buttonBg,  width = buttonWidth,command = b5press)
+bttn6 = Button(text = "6", fg = "white", bg = buttonBg, width = buttonWidth,command = b6press)
+bttn7 = Button(text = "7", fg = "white", bg = buttonBg, width = buttonWidth,command = b7press)
+bttn8 = Button(text = "8", fg = "white", bg = buttonBg, width = buttonWidth,command = b8press)
+bttn9 = Button(text = "9",fg = "white", bg = buttonBg,  width = buttonWidth,command = b9press)
+bttn0 = Button(text = "0", fg = "white", bg = buttonBg, width = buttonWidth,command = b0press)
 
-delbttn = Button(text = "<-", fg = "white", bg = "red", command = delchar)
+delbttn = Button(text = "<-", fg = "white", bg = "red", width = buttonWidth, command = delchar)
+clearbttn = Button(text = "C", fg = "white", bg = "red",  width = buttonWidth,command = clear)
 
-equalbttn = Button(text = "=", fg = "white", bg = "lightblue", command = evaluate)
+equalbttn = Button(text = "=", fg = "white", bg = "lightblue", width = buttonWidth, command = evaluate)
 
-plusbttn = Button(text = "+", fg = "white", bg = opButtonBg, command = pluspress)
-minusbttn = Button(text = "-", fg = "white", bg = opButtonBg, command = minuspress)
-multibttn = Button(text = "*", fg = "white", bg = opButtonBg, command = multipress)
-dividebttn = Button(text = "/", fg = "white", bg = opButtonBg, command = dividepress)
+plusbttn = Button(text = "+", fg = "white", bg = opButtonBg,  width = buttonWidth,command = pluspress)
+minusbttn = Button(text = "-", fg = "white", bg = opButtonBg,  width = buttonWidth,command = minuspress)
+multibttn = Button(text = "*", fg = "white", bg = opButtonBg,  width = buttonWidth,command = multipress)
+dividebttn = Button(text = "/", fg = "white", bg = opButtonBg, width = buttonWidth, command = dividepress)
 
-powerbttn = Button(text = "^", fg = "white", bg = opButtonBg, command = powerpress)
+powerbttn = Button(text = "^", fg = "white", bg = opButtonBg,  width = buttonWidth,command = powerpress)
+sqrtbttn = Button(text = "Sqrt", fg = "white", bg = opButtonBg, width = buttonWidth, command = sqrtpress)
 
+
+paropenbttn = Button(text = "(", fg = "white", bg = opButtonBg, width = buttonWidth, command = paropenpress)
+parclosebttn = Button(text = ")", fg = "white", bg = opButtonBg,  width = buttonWidth,command = parclosepress)
 
 
 
@@ -112,7 +133,11 @@ minusbttn.grid(row = 4, column = 3)
 multibttn.grid(row = 3, column = 3)
 dividebttn.grid(row = 2, column = 3)
 powerbttn.grid(row = 2, column = 4)
+sqrtbttn.grid(row = 3, column = 4)
+clearbttn.grid(row = 6, column = 0)
 
+paropenbttn.grid(row = 6, column = 1)
+parclosebttn.grid(row = 6, column = 2)
 
 mainWindow.bind("1", b1press)
 mainWindow.bind("2", b2press)
@@ -130,6 +155,8 @@ mainWindow.bind("-", minuspress)
 mainWindow.bind("*", multipress)
 mainWindow.bind("/", dividepress)
 mainWindow.bind("^", powerpress)
+mainWindow.bind("(", paropenpress)
+mainWindow.bind(")", parclosepress)
 
 
 mainloop()
