@@ -7,3 +7,4 @@ Currently supported operations (more to come):
 - multiplication
 - division
 - exponentiation
+- square root
