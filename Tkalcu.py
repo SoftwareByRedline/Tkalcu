@@ -6,6 +6,8 @@ from math import sqrt
 mainWindow = Tk()
 mainWindow.title("Tkalcu")
 mainWindow.config(bg = "black")
+mainWindow.attributes("-type", "float")
+
 
 operation = StringVar()
 character = ""
