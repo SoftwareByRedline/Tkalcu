@@ -1,14 +1,12 @@
 from tkinter import *
 import tkinter.font as tkfont
-from math import sqrt
+from math import sqrt, sin, cos, tan
 
 
 mainWindow = Tk()
 mainWindow.title("Tkalcu")
 mainWindow.config(bg = "black")
 mainWindow.attributes("-type", "float")
-
-
 operation = StringVar()
 character = ""
 operationDisplay = Label(text = operation.get(), fg = "white", bg = "black", height = 1 , width = 25)
@@ -59,6 +57,13 @@ def sqrtpress(arg = 0):
     addCharacter("sqrt(")
 def periodpress(arg = 0):
     addCharacter(".")
+
+def sinpress(arg = 0):
+    addCharacter("sin(")
+def cospress(arg = 0):
+    addCharacter("cos(")
+def tanpress(arg = 0):
+    addCharacter("tan(")
 
 
 buttonWidth = 5
@@ -112,6 +117,9 @@ dividebttn = Button(text = "/", fg = "white", bg = opButtonBg, width = buttonWid
 
 powerbttn = Button(text = "^", fg = "white", bg = opButtonBg,  width = buttonWidth,command = powerpress)
 sqrtbttn = Button(text = "Sqrt", fg = "white", bg = opButtonBg, width = buttonWidth, command = sqrtpress)
+sinbttn = Button(text = "Sin", fg = "white", bg = opButtonBg, width = buttonWidth, command = sinpress)
+cosbttn = Button(text = "Cos", fg = "white", bg = opButtonBg, width = buttonWidth, command = cospress)
+tanbttn = Button(text = "Tan", fg = "white", bg = opButtonBg, width = buttonWidth, command = tanpress)
 
 
 paropenbttn = Button(text = "(", fg = "white", bg = opButtonBg, width = buttonWidth, command = paropenpress)
@@ -139,6 +147,9 @@ multibttn.grid(row = 3, column = 3)
 dividebttn.grid(row = 2, column = 3)
 powerbttn.grid(row = 2, column = 4)
 sqrtbttn.grid(row = 3, column = 4)
+sinbttn.grid(row = 4, column = 4)
+cosbttn.grid(row = 5, column = 4)
+tanbttn.grid(row = 6, column = 4)
 clearbttn.grid(row = 6, column = 0)
 
 periodbttn.grid(row = 6, column = 3)
